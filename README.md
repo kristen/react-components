@@ -46,8 +46,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Project setup
 
 ```
-yarn create react-app tic-tac-toe --typescript
-yarn add typescript @types/node @types/react @types/react-dom @types/jest
+git clone git@github.com:kristen/tic-tac-toe.git react-components
+git remote rm origin
 ```
 
 ### Technologies used in this project uses
