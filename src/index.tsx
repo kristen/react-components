@@ -6,7 +6,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {Store} from "redux";
 import {RootState} from "./reducers";
-import PhoneNumberInput from "./PhoneNumberInput";
+import {InvoiceEmails} from "./InvoiceEmails";
 
 interface Props {
     store: Store<RootState>;
@@ -15,7 +15,7 @@ interface Props {
 const Root: React.FC<Props> = props => {
     return (
         <Provider store={props.store}>
-            <PhoneNumberInput />
+            <InvoiceEmails />
         </Provider>
     )
 };
