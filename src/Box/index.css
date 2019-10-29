@@ -18,3 +18,15 @@ body {
     left: 5px;
     cursor: pointer;
 }
+.hold {
+    border: 4px solid #ccc;
+}
+
+.hovered {
+    background: #f4f4f4;
+    border-style: dashed;
+}
+
+.invisible {
+    display: none;
+}

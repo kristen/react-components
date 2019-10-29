@@ -2,11 +2,11 @@ import React, {DragEvent} from 'react';
 import './index.css'
 import {connect} from "react-redux";
 import {RootState} from "../reducers";
-import {getGroupedTasks, getTasks} from "./selectors";
+import {getGroupedTasks} from "./selectors";
 import {Task, Type} from "./reducers";
+import * as actions from "./actions";
 import {ToDoDragActions} from "./actions";
 import {Dispatch} from "redux";
-import * as actions from './actions';
 
 interface OwnProps {
     groupedTasks: {[key in keyof typeof Type]: Task[]};
