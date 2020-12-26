@@ -14,6 +14,12 @@ interface Invoice {
     amount: number;
 }
 
+interface Payment {
+    day: number;
+    person: string;
+    amount: number;
+}
+
 interface Email {
     scheduleDay: number;
     type: string;
@@ -29,6 +35,23 @@ export class InvoiceEmails extends React.Component<Props, State> {
             },
             {
                 day: 1,
+                person: "Bob",
+                amount: 100
+            }
+        ],
+        payments: [
+            {
+                day: -9,
+                person: "Alice",
+                amount: 100
+            },
+            {
+                day: 1,
+                person: "Alice",
+                amount: 50
+            },
+            {
+                day: 0,
                 person: "Bob",
                 amount: 100
             }
@@ -54,18 +77,24 @@ export class InvoiceEmails extends React.Component<Props, State> {
         }
     ];
 
+    formatInvoiceEmail()
+
     scheduleInvoice(invoices: Invoice[]): string[] {
         // ideally this is a flatMap
         const invoiceEmails =  invoices.flatMap(({day, person, amount}) => {
-            return this.emails.map(({scheduleDay, type}): {finalScheduleDay: number, invoiceString: string} => {
+            return this.emails.map(({scheduleDay, type}) => {
                 const finalScheduleDay = day + scheduleDay;
-                const invoiceString =  `${finalScheduleDay}: [${type}] Invoice for ${person} for ${amount} dollars`;
+                const invoiceString =  (invoiceAmount: number) => {
+
+                    return `${finalScheduleDay}: [${type}] Invoice for ${person} for ${invoiceAmount} dollars`;
+                };
                 return {
                     finalScheduleDay,
                     invoiceString,
                 }
             })
         });
+
         return invoiceEmails.sort((invoiceEmailA, invoiceEmailB) => {
             return invoiceEmailA.finalScheduleDay - invoiceEmailB.finalScheduleDay;
         }).map(({invoiceString}) => invoiceString)
